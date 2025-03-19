@@ -1,0 +1,16 @@
+program sysManut;
+
+uses
+  Vcl.Forms,
+  menu in 'menu.pas' {F_menu},
+  U_Login in 'U_Login.pas' {F_login};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TF_login, F_login);
+  Application.CreateForm(TF_login, F_login);
+  Application.Run;
+end.

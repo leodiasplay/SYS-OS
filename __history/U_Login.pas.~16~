@@ -1,0 +1,97 @@
+unit U_Login;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.jpeg,
+  Vcl.Buttons, Vcl.StdCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TF_login = class(TForm)
+    Panel2: TPanel;
+    F_login: TImage;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    ed_usuario: TEdit;
+    ed_senha: TEdit;
+    lb_avisos: TLabel;
+    sql_login: TFDQuery;
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure ed_senhaChange(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  F_login: TF_login;
+
+implementation
+
+{$R *.dfm}
+
+uses menu, U_banco;
+
+procedure TF_login.ed_senhaChange(Sender: TObject);
+begin
+
+ lb_avisos.Caption := '';
+
+end;
+
+procedure TF_login.SpeedButton1Click(Sender: TObject);
+begin
+
+
+  if ed_usuario.Text = '' then
+  begin
+    lb_avisos.Caption := 'Digite um usuario';
+    ed_usuario.SetFocus;
+    exit
+  end;
+
+  if ed_senha.Text = '' then
+   begin
+     lb_avisos.Caption := 'Senha não informada!!';
+     ed_senha.SetFocus;
+     exit
+   end;
+
+   sql_login.Close;
+   sql_login.ParamByName('COD_USUARIO').AsString :=  ed_usuario.Text;
+   sql_login.ParamByName('SENHA').AsString       :=  ed_senha.Text;
+   sql_login.Open;
+
+   if not sql_login.IsEmpty then
+   begin
+    if F_menu = nil then
+      F_menu := TF_menu.Create(nil);
+      F_menu.Show;
+   end
+    else
+     begin
+       ShowMessage('Usuario'+ ed_usuario.Text +' não encontrado. Verifique!');
+       lb_avisos.Visible := True;
+       ed_usuario.Clear ;
+       ed_senha.Clear;
+       ed_usuario.SetFocus;
+     end;
+
+
+
+
+
+
+
+
+
+end;
+
+end.

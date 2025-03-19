@@ -1,0 +1,18 @@
+program sysManut;
+
+uses
+  Vcl.Forms,
+  menu in 'menu.pas' {f_menu},
+  U_Login in 'U_Login.pas' {F_login},
+  U_banco in 'U_banco.pas' {DataModule1: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TF_login, F_login);
+  Application.CreateForm(TF_login, F_login);
+  Application.CreateForm(TDataModule1, DataModule1);
+  Application.Run;
+end.

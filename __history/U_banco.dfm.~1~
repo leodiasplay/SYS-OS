@@ -1,0 +1,26 @@
+object DataModule1: TDataModule1
+  Height = 750
+  Width = 1000
+  PixelsPerInch = 120
+  object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
+    VendorLib = 
+      'C:\Users\leonardo-dias\Documents\sistemas\caio\sysManut\libmysql' +
+      '.dll'
+    Left = 160
+    Top = 216
+  end
+  object FDQuery1: TFDQuery
+    Left = 488
+    Top = 280
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=sysmanu_teste'
+      'User_Name=root'
+      'DriverID=MySQL'
+      'UseSSL=0')
+    LoginPrompt = False
+    Left = 272
+    Top = 136
+  end
+end

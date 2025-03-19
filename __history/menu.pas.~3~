@@ -1,0 +1,28 @@
+unit menu;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls;
+
+type
+  Tf_menu = class(TForm)
+    Panel1: TPanel;
+    TreeView1: TTreeView;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  f_menu: Tf_menu;
+
+implementation
+
+{$R *.dfm}
+
+uses U_banco, U_Login;
+
+end.
